@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Task List</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    
+    <div class="task-page">
+        <h1 class="header-title">Task List</h1>
+        <div class="card">
+            <form class="new-task-form">
+                <label for="task">New Task</label>
+                <input type="text" name="task" id="task">
+                <input type="submit" value="Add Task" class="btn">
+            </form>
+        </div>
+        <h4 class="list-title">Tasks</h4>
+        <div class="tasks-section">
+                <div class="filter-box">
+                    <label for="filter">Filter Tasks</label>
+                    <input type="text" name="filter" id="filter">
+                </div>
+                <ul class="list"></ul>
+                <a href="#" class="clear-tasks btn">Clear Tasks</a>
+        </div> 
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
