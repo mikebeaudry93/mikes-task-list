@@ -8,12 +8,35 @@ fireEventListeners();
 
 function fireEventListeners(){
     
-    // document.addEventListener('DOMContentLoaded', getTasks)
+    document.addEventListener('DOMContentLoaded', getTasks)
     form.addEventListener('submit', addNewTask)
     taskList.addEventListener('click', removeTask)
     clearBtn.addEventListener('click', removeAll)
     filterInput.addEventListener('keyup', filterItems)
 
+}
+
+function getTasks() {
+    let tasks;
+    if(localStorage.getItem('tasks') === null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'))
+    }
+
+    tasks.forEach(function(task){
+
+        const li = document.createElement('li');
+        li.className = "list-item";
+        li.appendChild(document.createTextNode(task));
+        const deletebutton = document.createElement('input')
+        deletebutton.setAttribute('value','Remove task')
+        deletebutton.setAttribute('type', 'submit')
+        deletebutton.setAttribute('class', 'delete-task')
+        li.appendChild(deletebutton)
+        taskList.appendChild(li)
+
+    })
 }
 
 function addNewTask (e) {
@@ -58,9 +81,28 @@ function storeInLocalStorage (task) {
 function removeTask (e) {
 
     if(e.target.classList.contains('delete-task')){
-        e.target.parentElement.remove();
+             e.target.parentElement.remove();
+
+             removeFromLocalStorage(e.target.parentElement)
+    } 
+}
+
+function removeFromLocalStorage (taskItem) {
+
+    let tasks 
+    if(localStorage.getItem('tasks') === null){
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
     }
 
+    tasks.forEach(function(task, index){
+        if(taskItem.textContent === task){
+            tasks.splice(index, 1);
+        };
+    });
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 function removeAll () {
@@ -71,8 +113,13 @@ function removeAll () {
         taskList.removeChild(taskList.firstChild)
     }
 
-    console.log(taskList)
+    clearAllTasksFromStorage();
 };
+
+function clearAllTasksFromStorage() {
+    if(confirm('Are You Sure?'))
+    localStorage.clear();
+}
 
 function filterItems (e) {
   const text = e.target.value.toLowerCase() 
