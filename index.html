@@ -5,25 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task List</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="task-page">
-        <h1 class="header-title">Task List</h1>
+        <div class="content">
+        <h1 class="header-title titles">Task List</h1>
         <div class="card">
             <form class="new-task-form">
-                <label for="task">New Task</label>
+                <label for="task" class="new-task second-title">New Task</label>
                 <input type="text" name="task" id="task">
-                <input type="submit" value="Add Task" class="btn">
+                <button type="submit" value="Add Task" class="button">Add Task</button>
             </form>
         </div>
-        <h4 class="list-title">Tasks</h4>
+        <h4 class="list-title titles">Tasks</h4>
         <div class="tasks-section">
                 <div class="filter-box">
-                    <label for="filter">Filter Tasks</label>
+                    <label for="filter" class="second-title">Filter Tasks</label>
                     <input type="text" name="filter" id="filter">
                 </div>
-                <ul class="list"></ul>
-                <a href="#" class="clear-tasks btn">Clear Tasks</a>
+                <div class="list-box">
+                    <ul class="list"></ul>
+                    <a href="#" class="clear-tasks btn">Clear Tasks</a>
+                </div>
         </div> 
     </div>
 

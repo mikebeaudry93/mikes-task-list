@@ -1,11 +1,75 @@
 * {
-    font-size: 28px;
+    font-family: 'Architects Daughter';
+    font-size: 1.4rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    /* border: 1px solid black;
+    box-shadow: 5px 10px; */
+    box-shadow: 2px 2px 8px 9px lightgrey;
+}
+
+
+.button, .button:hover {
+    border-radius: 5px;
+    margin-top: 24px;
+    outline: none;
+    font-size: 20px;
+    /* background-color: #353839; */
+    /* color:white; */
+    /* width: 200px;
+    padding: 7px; */
+    /* padding-left: 24px;
+    padding-right: 24px; */
+    padding: 3px 16px;
+}
+
+.button:hover {
+    background-color:#DCDCDC;
+}
+
+.second-title {
+    padding-left: 5px;
+}
+
+form {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#task{
+    width: 500px;
+}
+
+.new-task {
+    align-self: start;
+}
+
+.titles {
+    width: 500px;
+    font-size: 40px;
+    background-color: slategray;
+    color: white;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.list-title {
+    margin-top: 120px;
+    margin-bottom:24px;
 }
 
 .task-page{
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background-color: skyblue; */
 }
 
 .new-task-form{
@@ -16,9 +80,56 @@
 .tasks-section{
     display:flex;
     flex-direction:column;
+    width: 500px;
 }
 
 .filter-box {
     display: flex;
     flex-direction: column;
+}
+
+.list-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 24px;
+}
+
+a:link, a:visited  {
+ text-decoration: none;
+ /* background-color: #353839; */
+ color: black;
+ padding: 3px 16px;
+ border: 1px solid silver;
+ border-radius: 5px;
+ font-size: 20px;
+ /* width: 200px; */
+
+}
+
+
+.clear-tasks:hover {
+    background-color: #DCDCDC;
+}
+
+li {
+    width: 500px;
+    display: flex;
+    font-size: 24px;
+    justify-content: space-between;
+}
+
+ul {
+    padding: 0px;
+    list-style-type: none;
+}
+
+.delete-task, .delete-task:hover {
+    outline: none;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.delete-task:hover {
+    background-color:#DCDCDC
 }

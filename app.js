@@ -29,10 +29,11 @@ function getTasks() {
         const li = document.createElement('li');
         li.className = "list-item";
         li.appendChild(document.createTextNode(task));
-        const deletebutton = document.createElement('input')
-        deletebutton.setAttribute('value','Remove task')
+        const deletebutton = document.createElement('button')
+        deletebutton.setAttribute('value','Delete')
         deletebutton.setAttribute('type', 'submit')
         deletebutton.setAttribute('class', 'delete-task')
+        deletebutton.innerHTML = "Delete"
         li.appendChild(deletebutton)
         taskList.appendChild(li)
 
@@ -49,10 +50,11 @@ function addNewTask (e) {
         const li = document.createElement('li');
         li.className = "list-item";
         li.appendChild(document.createTextNode(taskValue.value));
-        const deletebutton = document.createElement('input')
-        deletebutton.setAttribute('value','Remove task')
+        const deletebutton = document.createElement('button')
+        deletebutton.setAttribute('value','Delete')
         deletebutton.setAttribute('type', 'submit')
         deletebutton.setAttribute('class', 'delete-task')
+        deletebutton.innerHTML = "Delete"
         li.appendChild(deletebutton)
         taskList.appendChild(li)
 
@@ -81,9 +83,11 @@ function storeInLocalStorage (task) {
 function removeTask (e) {
 
     if(e.target.classList.contains('delete-task')){
+            if(confirm('Are You Sure?')){
              e.target.parentElement.remove();
 
              removeFromLocalStorage(e.target.parentElement)
+        }
     } 
 }
 
@@ -108,16 +112,16 @@ function removeFromLocalStorage (taskItem) {
 function removeAll () {
     
     // taskList.innerHTML = '';
+    if(confirm('Are You Sure')){
+        while(taskList.firstChild) {
+            taskList.removeChild(taskList.firstChild)
+        }
 
-    while(taskList.firstChild) {
-        taskList.removeChild(taskList.firstChild)
+        clearAllTasksFromStorage();
     }
-
-    clearAllTasksFromStorage();
 };
 
 function clearAllTasksFromStorage() {
-    if(confirm('Are You Sure?'))
     localStorage.clear();
 }
 
@@ -126,7 +130,7 @@ function filterItems (e) {
 
   document.querySelectorAll('.list-item').forEach(function(task){
       if(task.firstChild.textContent.toLowerCase().indexOf(text) != -1){
-        task.style.display = 'block';
+        task.style.display = 'flex';
       } else {
           task.style.display = 'none';
       };
